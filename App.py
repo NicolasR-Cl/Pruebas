@@ -2,7 +2,7 @@ from flask import Flask, request
 from flask.helpers import flash, url_for
 from flask.templating import render_template
 from werkzeug.utils import redirect
-from flask_mysqldb import MySQL
+from flaskext.mysql import MySQL
 
 app = Flask(__name__)
 
@@ -13,7 +13,7 @@ app.config['MYSQL_DB'] = 'mysql'
 mysql = MySQL(app)
 
 app.secret_key ='mysecretkey'
-#ignore_missing_imports = True
+
 
 @app.route('/')
 def Index():
@@ -22,7 +22,6 @@ def Index():
     data = cur.fetchall()
     print(data)
     print(type(data))
-    #return render_template('index.html', usuarios =data)
     return str(data)
 
 
@@ -81,6 +80,8 @@ def delete_usuario(id):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=3306, debug=True)
+    app.run(port=3306, debug=True)
+    
+    # app.run(host='0.0.0.0', port=3306, debug=True)
     
     #Comentario de prueba de version 
