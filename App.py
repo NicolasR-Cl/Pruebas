@@ -3,6 +3,7 @@ from flask.helpers import flash, url_for
 from flask.templating import render_template
 from werkzeug.utils import redirect
 from flaskext.mysql import MySQL
+import pymysql
 
 app = Flask(__name__)
 
@@ -11,9 +12,6 @@ app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = 'admin'
 app.config['MYSQL_DB'] = 'mysql'
 mysql = MySQL(app)
-
-app.secret_key ='mysecretkey'
-
 
 @app.route('/')
 def Index():
@@ -84,5 +82,5 @@ if __name__ == '__main__':
     
     # app.run(host='0.0.0.0', port=3306, debug=True)
     
-    #Comentario de prueba de version 2.0
-    
+    #Comentario de prueba de version 2.1
+
